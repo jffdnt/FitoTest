@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="PvaSso"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ClientSideComponentId="[YOUR_COMPONENT_ID]"
+        ClientSideComponentProperties="{&quot;botURL&quot;:&quot;YOUR_BOT_URL&quot;,&quot;customScope&quot;:&quot;YOUR_CUSTOM_SCOPE&quot;,&quot;clientID&quot;:&quot;YOU_CLIENT_ID&quot;,&quot;authority&quot;:&quot;YOUR_AAD_LOGIN_URL&quot;,&quot;greet&quot;:TRUE,&quot;buttonLabel&quot;:&quot;CHAT_BUTTON_LABEL&quot;,&quot;botName&quot;:&quot;BOT_NAME&quot;,&quot;useFiToTemplate&quot;:TRUE,&quot;botAvatarImage&quot;:&quot;images/fito.png&quot;}">
+    </CustomAction>
+</Elements>
