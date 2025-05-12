@@ -9,10 +9,19 @@
           "manifest": "./src/extensions/pvaSso/PvaSsoApplicationCustomizer.manifest.json"
         }
       ]
+    },
+    "fi-to-webpart-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/fiToWebpart/FiToWebpartWebPart.js",
+          "manifest": "./src/webparts/fiToWebpart/FiToWebpartWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "PvaSsoApplicationCustomizerStrings": "lib/extensions/pvaSso/loc/{locale}.js"
+    "PvaSsoApplicationCustomizerStrings": "lib/extensions/pvaSso/loc/{locale}.js",
+    "FiToWebpartWebPartStrings": "lib/webparts/fiToWebpart/loc/{locale}.js"
   }
 }

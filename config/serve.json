@@ -2,33 +2,34 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json",
   "port": 4321,
   "https": true,
+  "initialPage": "https://{tenantDomain}/_layouts/workbench.aspx",
   "serveConfigurations": {
     "default": {
-      "pageUrl": "YOUR_SHAREPOINT_SITE",
+      "pageUrl": "https://att.sharepoint.com/sites/FleetAA",
       "customActions": {
         "bbcf8287-ea2d-4bb6-868f-19b9cf4b0812": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "botURL": "YOUR_BOT_URL",
-            "customScope" : "YOUR_CUSTOM_SCOPE",
-            "clientID" : "YOUR_CLIENT_ID",
-            "authority" : "YOUR_TENANT",
-            "greet" : true
+            "botURL": "https://14a101c364b24bd98495295688abe6.40.environment.api.powerplatform.com/powervirtualagents/botsbyschema/nwcpada_fwd/directline/token?api-version=2022-03-01-preview",
+            "customScope": "api://a990e5d5-af83-4367-b4fc-f853cb2de1b9/FWDCopilot.Read",
+            "clientID": "f9d4e6ed-c312-46f5-8d2d-878b4de6bf81",
+            "authority": "https://login.microsoftonline.com/e741d71c-c6b6-47b0-803c-0f3b32b07556",
+            "greet": true
           }
         }
       }
     },
     "pvaSso": {
-      "pageUrl": "YOUR_SHAREPOINT_SITE",
+      "pageUrl": "https://att.sharepoint.com/sites/FleetAA",
       "customActions": {
         "bbcf8287-ea2d-4bb6-868f-19b9cf4b0812": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "botURL": "YOUR_BOT_URL",
-            "customScope" : "YOUR_CUSTOM_SCOPE",
-            "clientID" : "YOUR_CLIENT_ID",
-            "authority" : "YOUR_TENANT",
-            "greet" : true
+            "botURL": "https://14a101c364b24bd98495295688abe6.40.environment.api.powerplatform.com/powervirtualagents/botsbyschema/nwcpada_fwd/directline/token?api-version=2022-03-01-preview",
+            "customScope": "api://a990e5d5-af83-4367-b4fc-f853cb2de1b9/FWDCopilot.Read",
+            "clientID": "f9d4e6ed-c312-46f5-8d2d-878b4de6bf81",
+            "authority": "https://login.microsoftonline.com/e741d71c-c6b6-47b0-803c-0f3b32b07556",
+            "greet": true
           }
         }
       }

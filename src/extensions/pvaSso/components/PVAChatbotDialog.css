@@ -1,0 +1,69 @@
+/* Chatbot container */
+.chatbot-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+/* Template container for FiTo template */
+.template-container {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Banner styling */
+.banner {
+    display: flex;
+    align-items: center;
+    background-color: #009edb;
+    height: 50px;
+    position: relative;
+}
+.banner-title {
+    color: '#009FDB';
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0;
+    padding: 0 20px;
+}
+.login-status {
+    position: absolute;
+    right: 20px;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+}
+.login-button {
+    background-color: white;
+    color: #009edb;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif;
+    margin-left: 10px;
+}
+
+/* Webchat containers */
+.webchat-container {
+    height: calc(100% - 50px);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+/* Spinner container */
+.spinner-container {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* Chat container for non-template usage */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

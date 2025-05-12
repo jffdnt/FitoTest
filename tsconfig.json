@@ -1,5 +1,5 @@
 {
-  "extends": "./node_modules/@microsoft/rush-stack-compiler-4.7/includes/tsconfig-web.json",
+  "extends": "./node_modules/@microsoft/rush-stack-compiler-3.9/includes/tsconfig-web.json",
   "compilerOptions": {
     "target": "es5",
     "forceConsistentCasingInFileNames": true,
@@ -12,24 +12,31 @@
     "skipLibCheck": true,
     "outDir": "lib",
     "inlineSources": false,
-    "noImplicitAny": true,
-
+    "strictNullChecks": false,
+    "noUnusedLocals": false,
+    "strict": true,
+    "baseUrl": ".",
     "typeRoots": [
       "./node_modules/@types",
       "./node_modules/@microsoft"
     ],
     "types": [
-      "webpack-env"
+      "webpack-env",
+      "react",
+      "react-dom"
     ],
-    "lib": [
-      "es5",
-      "dom",
-      "es2015.collection",
-      "es2015.promise"
-    ]
+    "paths": {
+      "@microsoft/sp-core-library": ["./node_modules/@microsoft/sp-core-library/dist/index-internal.d.ts"],
+      "@microsoft/sp-application-base": ["./node_modules/@microsoft/sp-application-base/dist/index-internal.d.ts"],
+      "@microsoft/sp-extension-base": ["./node_modules/@microsoft/sp-extension-base/dist/index-internal.d.ts"]
+    }
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib"
   ]
 }

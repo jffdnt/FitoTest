@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="PvaSso"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ClientSideComponentId="bbcf8287-ea2d-4bb6-868f-19b9cf4b0812"
+        ClientSideComponentProperties="{&quot;botURL&quot;:&quot;https://14a101c364b24bd98495295688abe6.40.environment.api.powerplatform.com/powervirtualagents/botsbyschema/nwcpada_fwd/directline/token?api-version=2022-03-01-preview&quot;,&quot;customScope&quot;:&quot;api://a990e5d5-af83-4367-b4fc-f853cb2de1b9/FWDCopilot.Read&quot;,&quot;clientID&quot;:&quot;f9d4e6ed-c312-46f5-8d2d-878b4de6bf81&quot;,&quot;authority&quot;:&quot;https://login.microsoftonline.com/e741d71c-c6b6-47b0-803c-0f3b32b07556&quot;,&quot;greet&quot;:true,&quot;buttonLabel&quot;:&quot;CHAT with FiTo&quot;,&quot;botName&quot;:&quot;FiTo AI (Powered by Ask AT&amp;T)&quot;,&quot;useFiToTemplate&quot;:true,&quot;botAvatarImage&quot;:&quot;images/fito.png&quot;}">
+    </CustomAction>
+</Elements>

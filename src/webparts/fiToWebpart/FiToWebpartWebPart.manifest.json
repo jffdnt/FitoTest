@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "d6cfeaf9-3553-4385-82d9-d82e66d068d0",
+  "alias": "FiToWebpartWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Advanced" },
+    "title": { "default": "FiTo Webpart" },
+    "description": { "default": "FiTo Webpart description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "FiTo Webpart"
+    }
+  }]
+}

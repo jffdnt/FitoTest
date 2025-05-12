@@ -1,83 +1,76 @@
-// MSALWrapper.ts
-import { PublicClientApplication, AuthenticationResult, 
-    Configuration, InteractionRequiredAuthError} from "@azure/msal-browser";
+import { Msal2Provider } from '@microsoft/mgt-msal2-provider';
 
-export class MSALWrapper {
-  private msalConfig: Configuration;
+interface TokenResponse {
+    accessToken: string;
+    expiresOn: Date;
+    scopes: string[];
+    error?: any;
+}
 
-  private msalInstance: PublicClientApplication;
+export default class MSALWrapper {
+    private provider: Msal2Provider;
 
-  constructor(clientId: string, authority: string) {
-    this.msalConfig = {
-      auth: {
-        clientId: clientId,
-        authority: authority,
-      },
-      cache: {
-        cacheLocation: "localStorage",
-      },
-    };
-
-    this.msalInstance = new PublicClientApplication(this.msalConfig);
-  }
-
-  public async handleLoggedInUser(scopes: string[], userEmail: string): Promise<AuthenticationResult | null> {
-    
-    let userAccount = null;
-    const accounts = this.msalInstance.getAllAccounts();
-    
-    if(accounts === null || accounts.length === 0) {
-      console.log("No users are signed in");
-      return null;
-    } else if (accounts.length > 1)
-    {
-        userAccount = this.msalInstance.getAccountByUsername(userEmail);
-    } else {
-        userAccount = accounts[0];
+    constructor(clientID: string, authority: string) {
+        console.log('Initializing MSALWrapper with:', { clientID, authority });
+        this.provider = new Msal2Provider({
+            clientId: clientID,
+            authority: authority
+        });
     }
 
-    if(userAccount !== null) {
-        const accessTokenRequest = {
-            scopes: scopes,
-            account: userAccount
-          };
-
-          return this.msalInstance.acquireTokenSilent(accessTokenRequest).then((response) => {            
-            return response;
-          }).catch((errorinternal) => {  
-            console.log(errorinternal);  
-            return null;
-          }); 
-    }
-    return null;
-  }
-  
-
-  public async acquireAccessToken(scopes: string[], userEmail: string): Promise<AuthenticationResult | null> {
-        
-
-    const accessTokenRequest = {
-        scopes: scopes,
-        loginHint: userEmail
-    }
-
-    return this.msalInstance.ssoSilent(accessTokenRequest).then((response) => {
-        return response
-    }).catch((silentError) => {
-        console.log(silentError);
-        if (silentError instanceof InteractionRequiredAuthError) {
-            return this.msalInstance.loginPopup(accessTokenRequest).then((response) => {
-                return response;
-            }
-            ).catch((error) => {
-                console.log(error);
-                return null;
+    public async handleLoggedInUser(scopes: string[], userEmail: string): Promise<TokenResponse | null> {
+        console.log('Attempting to get token for logged in user:', { scopes, userEmail });
+        try {
+            const accessToken = await this.provider.getAccessToken({ scopes });
+            console.log('Token response received:', {
+                hasAccessToken: !!accessToken,
+                length: accessToken?.length
             });
+            
+            if (!accessToken) {
+                console.warn('Token response missing access token');
+                return null;
+            }
+
+            return {
+                accessToken,
+                expiresOn: new Date(Date.now() + 3600000), // Default 1 hour expiration
+                scopes
+            };
+        } catch (error) {
+            console.error('Error getting token for logged in user:', {
+                error: error instanceof Error ? error.message : error,
+                stack: error instanceof Error ? error.stack : undefined
+            });
+            return null;
         }
-    return null;
-    })
-}
+    }
 
-}
+    public async acquireAccessToken(scopes: string[], userEmail: string): Promise<TokenResponse | null> {
+        console.log('Attempting to acquire new access token:', { scopes, userEmail });
+        try {
+            const accessToken = await this.provider.getAccessToken({ scopes });
+            console.log('New token response received:', {
+                hasAccessToken: !!accessToken,
+                length: accessToken?.length
+            });
 
-export default MSALWrapper;
+            if (!accessToken) {
+                console.warn('New token response missing access token');
+                return null;
+            }
+
+            return {
+                accessToken,
+                expiresOn: new Date(Date.now() + 3600000), // Default 1 hour expiration
+                scopes
+            };
+        } catch (error) {
+            console.error('Error acquiring access token:', {
+                error: error instanceof Error ? error.message : error,
+                stack: error instanceof Error ? error.stack : undefined
+            });
+            return null;
+        }
+    }
+}
