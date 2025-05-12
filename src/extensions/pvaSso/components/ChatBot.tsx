@@ -333,15 +333,19 @@ export const ChatBot: React.FC<IChatbotProps> = (props): JSX.Element => {
             </DefaultButton>
             <Dialog 
                 styles={{
-                    main: {
+                    root: {
                         position: 'fixed',
                         top: '50%',
                         right: 20,
                         transform: 'translateY(-50%)',
+                        margin: 0,
+                        zIndex: 1000,
+                        pointerEvents: 'auto'
+                    },
+                    main: {
                         width: 450,
                         minWidth: 450,
-                        maxWidth: '1000px',
-                        zIndex: 1000
+                        maxWidth: '1000px'
                     }
                 }} 
                 hidden={hideDialog} 
